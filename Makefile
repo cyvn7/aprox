@@ -1,3 +1,9 @@
+APROX2: main.o splines.o points.o wielomiany.o gaus/libge.a
+	$(CC) -o aprox_LAN  main.o splines.o points.o wielomiany.o -L gaus -l ge
+
+wielomiany.o: makespl.h points.h gaus/piv_ge_solver.h
+	$(CC) -I gaus -c wielomiany.c
+
 aprox: main.o splines.o points.o aproksymator_na_bazie.o gaus/libge.a
 	$(CC) -o aprox  main.o splines.o points.o aproksymator_na_bazie.o -L gaus -l ge
 
@@ -16,4 +22,4 @@ interpolator.o: makespl.h points.h gaus/piv_ge_solver.h
 .PHONY: clean
 
 clean:
-	-rm *.o aprox intrp prosta
+	-rm *.o aprox intrp prosta APROX2

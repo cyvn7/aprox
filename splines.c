@@ -55,7 +55,7 @@ value_spl (spline_t * spl, double x)
       break;
 
   dx = x - spl->x[i];
-
+  //printf("%g\n",spl->f1[i]);
   return spl->f[i]
 	+ dx * spl->f1[i]
 	+ dx * dx / 2 *  spl->f2[i] 

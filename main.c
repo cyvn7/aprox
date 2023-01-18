@@ -99,7 +99,6 @@ main (int argc, char **argv)
       fprintf (stderr, "%s: can not write spline file: %s\n\n", argv[0], out);
       exit (EXIT_FAILURE);
     }
-
     make_spl (&pts, &spl);
 
     if( spl.n > 0 )
@@ -147,15 +146,11 @@ main (int argc, char **argv)
     dx = (toX - fromX) / (n - 1);
 
     if (gpf == NULL) {
-      fprintf (stderr, "%s: can not write gnuplot file: %s\n\n", argv[0],
-               gpt);
+      fprintf (stderr, "%s: can not write gnuplot file: %s\n\n", argv[0],gpt);
       exit (EXIT_FAILURE);
     }
-
     for (i = 0; i < n; i++)
-      fprintf (gpf, "%g %g\n", fromX + i * dx,
-               value_spl (&spl, fromX + i * dx));
-
+      fprintf (gpf, "%g %g\n", fromX + i * dx,value_spl (&spl, fromX + i * dx));
     fclose (gpf);
   }
 
